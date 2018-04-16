@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://10.20.91.130/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.online.college.core.dashboard.dao.DashDao">
+	<select id="listDash" resultType="com.online.college.core.dashboard.domain.Dash">
+		SELECT 
+			COUNT(u.id) amount,MONTH(u.create_time) MONTH  
+		FROM 
+			t_auth_user u 
+		WHERE 
+			YEAR(u.create_time) = YEAR( NOW( ) ) 
+		GROUP BY 
+			MONTH(u.create_time)
+	</select>
+
+</mapper>
